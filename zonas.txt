@@ -1,0 +1,10 @@
+Monte Moon,Oscuro
+Bosque Verde,Templado
+Lago Furia,Lluvioso
+Sendero Igneo,Ceniza
+Cueva Extravio,Oscuro
+Torre de los Cielos,Brumoso
+Cueva de los Espejos,Humedo
+Volcan Wela,Soleado
+Bosque Lumirinto,Brumoso
+Sierra Napada,Ventisca

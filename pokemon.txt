@@ -1,0 +1,9 @@
+Onix,Roca
+Gyarados,Agua
+Torkoal,Fuego
+Gible,Tierra
+Litwick,Fantasma
+Carbink,Roca
+Salandit,Fuego
+Morgrem,Siniestro
+Cetoddle,Hielo
