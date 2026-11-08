@@ -1,4 +1,5 @@
 Onix,Roca
+Pikachu,Electrico
 Gyarados,Agua
 Torkoal,Fuego
 Gible,Tierra

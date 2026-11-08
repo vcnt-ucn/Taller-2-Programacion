@@ -1,4 +1,5 @@
 Onix,Monte Moon
+Pikachu,Bosque Verde
 Gyarados,Lago Furia
 Torkoal,Sendero Igneo
 Gible,Cueva Extravio
