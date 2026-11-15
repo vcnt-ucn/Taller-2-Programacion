@@ -13,7 +13,7 @@ np = 0 # cantidad de Pokémon en la Pokédex
 nz = 0 # cantidad de zonas
 
 error = False
-ignoradas = 0
+ignoradas = 0 # cantidad de lineas ignoradas
 
 entrenador = input("Ingrese su nombre de entrenador: ")
 
@@ -23,7 +23,7 @@ for linea in archivo:
     linea = linea.strip()
     if linea != "":
         partes = linea.split(",")
-        if len(partes) != 2:
+        if len(partes) != 2 or partes[0] == "" or partes[1] == "":
             error = True
         elif nz < MAX_ZONAS:
             zonas[nz] = partes[0]
@@ -37,7 +37,7 @@ if not error:
         linea = linea.strip()
         if linea != "":
             partes = linea.split(",")
-            if len(partes) != 2:
+            if len(partes) != 2 or partes[0] == "" or partes[1] == "":
                 error = True
             elif np < MAX_POKEMON:
                 nombres[np] = partes[0]
@@ -51,7 +51,7 @@ if not error:
         linea = linea.strip()
         if linea != "":
             partes = linea.split(",")
-            if len(partes) != 2:
+            if len(partes) != 2 or partes[0] == "" or partes[1] == "":
                 error = True
             else:
                 nom = partes[0] # nombre del Pokémon
@@ -136,6 +136,7 @@ else:
                     print("Avistamiento registrado")
             # === 2. Eliminar Pokémon ===
             case 2:
+                # desplazar cada Pokémon una posición hacia atrás para tapar el hueco
                 nom = input("Nombre del Pokémon a eliminar: ")
                 p = -1
                 for i in range(np):
@@ -157,6 +158,7 @@ else:
                     print("Pokémon eliminado")
             # === 3. Ranking ===
             case 3:
+                # ordenar los índices (no los datos) para no perder la correspondencia nombre-total
                 totales = [0] * MAX_POKEMON
                 orden = [0] * MAX_POKEMON
                 for i in range(np):
@@ -177,16 +179,20 @@ else:
                     print(f"{k + 1}. {nombres[i]} - {totales[i]} avistamientos")
             # === 4. Zona con menos avistamientos ===
             case 4:
-                mejor = -1
-                menor = 0
-                for j in range(nz):
-                    suma = 0
-                    for i in range(np):
-                        suma += avist[i][j]
-                    if mejor == -1 or suma < menor:
-                        mejor = j
-                        menor = suma
-                print(f"La zona con menos avistamientos es {zonas[mejor]} ({climas[mejor]}), con {menor} avistamientos")
+                # "<" estricto conserva la primera zona según el orden del archivo en caso de empate
+                if nz == 0:
+                    print("No hay zonas registradas")
+                else:
+                    mejor = -1
+                    menor = 0
+                    for j in range(nz):
+                        suma = 0
+                        for i in range(np):
+                            suma += avist[i][j]
+                        if mejor == -1 or suma < menor:
+                            mejor = j
+                            menor = suma
+                    print(f"La zona con menos avistamientos es {zonas[mejor]} ({climas[mejor]}), con {menor} avistamientos")
             # === 5. Avistamientos de un Pokémon ===
             case 5:
                 nom = input("Nombre del Pokémon: ")
