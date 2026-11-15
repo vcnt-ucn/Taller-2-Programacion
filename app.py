@@ -179,10 +179,10 @@ else:
                     print(f"{k + 1}. {nombres[i]} - {totales[i]} avistamientos")
             # === 4. Zona con menos avistamientos ===
             case 4:
-                # "<" estricto conserva la primera zona según el orden del archivo en caso de empate
                 if nz == 0:
                     print("No hay zonas registradas")
                 else:
+                    # "<" estricto conserva la primera zona según el orden del archivo en caso de empate
                     mejor = -1
                     menor = 0
                     for j in range(nz):
@@ -250,16 +250,19 @@ else:
                         print(f"{nombres[pmax]} es el Pokémon más común en {zon}, con {avist[pmax][z]} avistamientos")
             # === 8. Guardar y salir ===
             case 8:
+                # sobrescribir pokemon.txt
                 archivo = open("pokemon.txt", "w", encoding="utf-8")
                 for i in range(np):
                     archivo.write(f"{nombres[i]},{tipos[i]}\n")
                 archivo.close()
+                # sobrescribir avistamientos.txt
                 archivo = open("avistamientos.txt", "w", encoding="utf-8")
                 for i in range(np):
                     for j in range(nz):
                         for veces in range(avist[i][j]):
                             archivo.write(f"{nombres[i]},{zonas[j]}\n")
                 archivo.close()
+                # sobrescribir estadisticas.txt
                 archivo = open("estadisticas.txt", "w", encoding="utf-8")
                 for j in range(nz):
                     suma = 0
